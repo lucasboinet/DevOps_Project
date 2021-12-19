@@ -23,7 +23,7 @@ pipelineJob('CI/Git_Job') {
         }
         stringParam {
             name('VERSION')
-            description('Nom de la version')
+            description('Nom de la version -> ex: {version_name}-SNAPSHOT.jar')
             trim(true)
         }
     }

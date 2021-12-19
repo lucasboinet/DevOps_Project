@@ -20,9 +20,7 @@ pipeline {
         }
         stage('Compile app') {
             steps {
-                script {
-                    sh 'mvn clean compile'
-                }
+                sh 'mvn clean compile'
             }
         }
         stage('Run unit tests and integration tests') {
@@ -30,22 +28,18 @@ pipeline {
                 expression { params.SKIP_TESTS == false }
             }
             steps {
-                script {
-                   sh 'mvn test'
-                }
+                sh 'mvn test'
             }
         }
         stage('Build .jar') {
             steps {
-                script {
-                    sh 'mvn package'
-                }
+                sh 'mvn package'
             }
         }
-        /* stage('Move .jar in jenkins workspace') {
+        stage('Move .jar in jenkins workspace') {
             steps {
-                
+                sh "mv /var/jenkins_home/workspace/CI/Git_Job/sb3t-ws/target/*.jar /var/jenkins_home/workspace/${params.VERSION}-${params.VERSION_TYPE}.jar"
             }
-        } */
+        }
     }
 }

@@ -82,3 +82,4 @@ tool:
 jobs:
   - file: /var/jenkins_config/jobs/folders.groovy
   - file: /var/jenkins_config/jobs/git-job.groovy
+  - file: /var/jenkins_config/jobs/terraform-job.groovy

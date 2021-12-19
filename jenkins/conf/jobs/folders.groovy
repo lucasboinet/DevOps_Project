@@ -4,4 +4,5 @@
  */
 
 folder('CI')
-folder('CD')
+folder('IaC')
+folder('CaC')
