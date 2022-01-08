@@ -1,0 +1,16 @@
+#cloud-config
+groups:
+  - deploy
+
+users:
+  - name: deploy
+    gecos: terraform
+    shell: /bin/bash
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    primary-group: deploy
+    lock_passwd: false
+    ssh_authorized_keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC1Owj1WlPLDqSofg4lyhQ7qFIJtO+paqSikR8+ueiX182PmxYxIptYpQ+Z6V1nqqjuXebWva8kbZafpfV18+DMOxr1LeaBpSArIJ7q3SG6C9CDxj6PpWZ5/pyNq/H0aoRWI3andZ0jyrwSrDIgsWSvvVjNbyssooqAF+OhnxP/OuaBHXl2Wh9LkaUd9/8mgxZKXW9DRichjr6Js6oND1PBTHJi8HvSKk/8patP78LtAop2sEuhJbXpiCT2XlhnvuDLgBMbqTVJeqY8WWlaLnEZwpbRyJFn+w6weqI7zIxU6GQDZeJQtV16gapFdwJMlg+qz0XGWIV0G01rN07cpOcJuTulNqI5//2+8k8PM1TQJmYzEZuPTcBIqTcL1BbmgpSFYgQtdnEF9OfFQ89BXwu88pg0RwT98gjuxEOCTaw584CInsGNp3ZAxa+NG1JJIeKGvf1+zO51hKhRuIs3YItLikRyZqIt2RXjjg3CqjiTWONsO+106NYYsZ1QJy7xZiM= boinet@MSI
+
+packages:
+  - python3
