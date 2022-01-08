@@ -41,5 +41,10 @@ pipeline {
                 sh "mv /var/jenkins_home/workspace/CI/Git_Job/sb3t-ws/target/*.jar /var/jenkins_home/workspace/${params.VERSION}-${params.VERSION_TYPE}.jar"
             }
         }
+        stage('Launch terraform job') {
+            steps {
+                build job: '../IaC/Terraform_Job', parameters: [booleanParam(name: 'DESTROY_INSTANCE', value: false)]
+            }
+        }
     }
 }

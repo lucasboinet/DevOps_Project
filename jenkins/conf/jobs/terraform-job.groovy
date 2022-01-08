@@ -5,7 +5,11 @@ def pipelineScript = new File('/var/jenkins_config/jobs/terraform-job-pipeline.g
 pipelineJob('Iac/Terraform_Job') {
     description("Tasks linked to terraform instance")
     parameters {
-        
+        booleanParam {
+            name('DESTROY_INSTANCE')
+            defaultValue(false)
+            description("Detruire l'instance aws")
+        }
     }
     definition {
         cps {
