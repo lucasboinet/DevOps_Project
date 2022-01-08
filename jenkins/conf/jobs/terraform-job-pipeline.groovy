@@ -6,6 +6,9 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: '100'))
         ansiColor('xterm')
     }
+    tools {
+        terraform 'terraform-1.0.11'
+    }
     stages {
         stage('Clone terraform config from git') {
             steps {
@@ -14,7 +17,7 @@ pipeline {
         }
         stage('Init terraform instance') {
             steps {
-                sh 'cd ./terraform'
+                sh 'cp -r ./terraform/* .'
                 sh 'terraform init'
             }
         }
