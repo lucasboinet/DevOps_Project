@@ -12,7 +12,6 @@ terraform {
 provider "aws" {
   profile = "default"
   region  = "us-east-2"
-  shared_credentials_file = "./credential"
 }
 
 resource "aws_instance" "app_server" {
@@ -32,7 +31,7 @@ resource "aws_instance" "app_server" {
 
 resource "aws_key_pair" "deployer" {
   key_name   = "deployer-key-boinet"
-  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDlbAv/HcXI3GH6OlzYIaZH5BRBBwvkoMYoi6Re2TBCeoU36MFWs6vV8nrOm06vPzSWh+fObNC2fqsEtqCJMJ9x0yZv86rla9A4B8YO+VN/uMnfT/dBM+xbg63meNBCVKiY/h3KaGGD9CO/cBuuuiijPmAHKpRzkhvTPRjnDwf91+sj2tpikR5hl1Xc5Auk0sn9/wpq/AcUn4ojToNStl+bIfPOwU+hDkZ5t43BPGmazoRiT5XtdVAt79Obj1hE0GKyOO4ercBT1FjeYcG7pGlKcJB4fziK4u5gfLziQYBQB1qHDRHjz3fJR/UX6+mze1BCSoUI2NFxFqVUKPDqN6FfnBFfnGyVZkPdgLvbFn7Piz/GKpks1vYDEbFubo+3nrqPwYXGjO1hqz3Xy5+d5dWkr2ObOEFLbd6mRu1QN+aMDgvJVpG2dkFvknJHHJR72gxmVp66lNE4oJ1ACF621f4CatkpLXoky0V7Xzsc6f6VYBOhiKbfBCKMJ0rrInZ+pbs= boinet@MSI"
+  public_key = file("./ssh/id_deployer_key.pub")
 }
 
 resource "aws_security_group" "allow_SSH" {
