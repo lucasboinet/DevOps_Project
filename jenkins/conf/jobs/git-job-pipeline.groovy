@@ -43,7 +43,8 @@ pipeline {
         }
         stage('Launch terraform job') {
             steps {
-                build job: '../IaC/Terraform_Job', parameters: [booleanParam(name: 'DESTROY_INSTANCE', value: false)]
+                build job: '../IaC/Terraform_Job', parameters: []
+]
             }
         }
     }

@@ -1,0 +1,6 @@
+[terraform:vars]
+ansible_user=deploy
+ansible_port=22
+
+[terraform]
+18.221.77.102

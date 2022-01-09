@@ -36,7 +36,7 @@ resource "aws_key_pair" "deployer" {
 }
 
 resource "aws_security_group" "allow_SSH" {
-  name = "allow_SSH_BOINET"
+  name = "allow_SSH"
   description = "Allow ssh"
 
   ingress {
@@ -64,7 +64,7 @@ resource "aws_security_group" "allow_SSH" {
 }
 
 resource "aws_security_group" "allow_HTTPD" {
-  name = "allow_HTTPD_BOINET"
+  name = "allow_HTTPD"
   description = "Allow httpd"
 
   ingress {

@@ -21,9 +21,9 @@ pipeline {
                 sh 'terraform init'
             }
         }
-        stage('Start terraform instance') {
+        stage('terraform instance action') {
             steps {
-                sh 'terraform apply --auto-approve'
+                sh "terraform ${params.INSTANCE_ACTION} --auto-approve"
             }
         }
     }
