@@ -3,4 +3,4 @@ ansible_user=deploy
 ansible_port=22
 
 [terraform]
-18.221.77.102
+3.145.82.190

@@ -4,7 +4,7 @@ apache_listen_port: 8080
 
 apache_global_vhost_settings: |
   DirectoryIndex index.php index.html
-apache_vhosts_servername: "ec2-18-221-77-102.us-east-2.compute.amazonaws.com"
+apache_vhosts_servername: "ec2-3.145.82.190.us-east-2.compute.amazonaws.com"
 apache_vhosts_documentroot: "/var/www/html"
 
 apache_allow_override: "All"

@@ -20,7 +20,7 @@ resource "aws_instance" "app_server" {
   instance_type = "t2.micro"
   associate_public_ip_address = "true"
   key_name = "deployer-key-boinet"
-  vpc_security_group_ids = [ aws_security_group.allow_SSH.id, aws_security_group.allow_HTTPD.id ]
+  vpc_security_group_ids = [ aws_security_group.allow_SSH_Lucas_Boinet.id, aws_security_group.allow_HTTPD_Lucas_Boinet.id ]
   user_data = templatefile("scripts/add-ssh-web-app.yaml",{})
 
   tags = {
@@ -35,8 +35,8 @@ resource "aws_key_pair" "deployer" {
   public_key = file("./ssh/id_deployer_key.pub")
 }
 
-resource "aws_security_group" "allow_SSH" {
-  name = "allow_SSH"
+resource "aws_security_group" "allow_SSH_Lucas_Boinet" {
+  name = "allow_SSH_Lucas_Boinet"
   description = "Allow ssh"
 
   ingress {
@@ -63,8 +63,8 @@ resource "aws_security_group" "allow_SSH" {
   }
 }
 
-resource "aws_security_group" "allow_HTTPD" {
-  name = "allow_HTTPD"
+resource "aws_security_group" "allow_HTTPD_Lucas_Boinet" {
+  name = "allow_HTTPD_Lucas_Boinet"
   description = "Allow httpd"
 
   ingress {
