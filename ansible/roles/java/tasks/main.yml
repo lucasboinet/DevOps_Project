@@ -1,26 +1,23 @@
-- name: Install httpd
+---
+- name: Java installation
+  become: yes
   yum:
-    name: httpd
-  notify: start httpd
-- name: Add port 8080 to httpd config
-  lineinfile:
-    path: '/etc/httpd/conf/httpd.conf'
-    regexp: '^Listen 80'
-    line: Listen 8080
-- name: delete useless .conf files
-  file:
-    path: '/etc/httpd/conf.d/{{ item }}'
-    state: absent
-  with_items:
-    - autoindex.conf
-    - userdir.conf
-    - welcome.conf
-- name: copy VirtualHost config
-  template:
-    src: 'virtualHost.conf.j2'
-    dest: '/etc/httpd/conf.d/virtual.conf'
-  notify: restart httpd
-- name: copy jar file
-  copy:
-    src: '*.jar'
-    dest: '/var/www/html/*.jar'
+    name: java-11-openjdk
+
+- name: Create java_user on instance
+  become: yes
+  ansible.builtin.user:
+    name: java_user
+    group: admin
+    password: admin
+
+- name: Get jar file from folder
+  become: yes
+  get_url:
+    url: https://github.com/Ozz007/sb3t/releases/download/1.0/sb3t-ws-1.0.jar
+    dest: /home/java_user/
+
+- name: Start java application
+  shell: 'java -jar {{ JAR_PATH }}/{{ JAR_NAME }} -Xmx{{ JVM_SIZE }}'
+  become_user : '{{ USER_NAME }}'
+  async: 100
