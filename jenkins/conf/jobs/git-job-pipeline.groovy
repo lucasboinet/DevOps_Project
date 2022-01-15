@@ -43,7 +43,7 @@ pipeline {
         }
         stage('Launch terraform job') {
             steps {
-                build job: '../IaC/Terraform_Job', parameters: []
+                build job: '../IaC/Terraform_Job', parameters: [[$class: 'BooleanParameterValue', name: 'INSTANCE_ACTION', value: true]]
 ]
             }
         }
