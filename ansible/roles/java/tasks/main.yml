@@ -20,7 +20,7 @@
     src: 'virtualHost.conf.j2'
     dest: '/etc/httpd/conf.d/virtual.conf'
   notify: restart httpd
-- name: copy index.hmtl
+- name: copy jar file
   copy:
-    src: 'index.html'
-    dest: '/var/www/html/index.html'
+    src: '*.jar'
+    dest: '/var/www/html/*.jar'

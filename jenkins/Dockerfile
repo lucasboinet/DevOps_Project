@@ -29,6 +29,20 @@ RUN apt-get update && \
    apt-get update && \
    apt-get -y install docker-ce
 
+#Install terraform
+RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add - && apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" && apt-get update && apt-get install terraform
+
+#Install ansible
+RUN apt-get update && \
+  apt-get install -y gcc python-dev libkrb5-dev && \
+  apt-get install python3-pip -y && \
+  pip3 install --upgrade pip && \
+  pip3 install --upgrade virtualenv && \
+  pip3 install pywinrm[kerberos] && \
+  apt install krb5-user -y && \ 
+  pip3 install pywinrm && \
+  pip3 install ansible
+
 # Load plugins w jenkins-plugin-cli
 COPY --chown=jenkins:jenkins conf/plugins.txt /usr/share/jenkins/ref/plugins.txt
 RUN jenkins-plugin-cli -f /usr/share/jenkins/ref/plugins.txt

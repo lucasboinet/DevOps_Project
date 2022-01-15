@@ -1,4 +1,4 @@
 - hosts: terraform
   become: yes
   roles:
-    - role: 'roles/apache'
+    - role: 'roles/java'
